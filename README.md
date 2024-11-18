@@ -285,6 +285,8 @@ Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
 }, d, i);
 ```
 
+where `d` is the delay, and `i` is the interval, in game ticks.
+
 
 
 ## plugin.yml
