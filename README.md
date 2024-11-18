@@ -22,6 +22,8 @@ How to easily make a Minecraft plugin using the Bukkit/Spigot API.
 8. Add an `onEnable()` method to your `Main` class with an `@Override` tag.
 9. Add values for `name`, `main`, and `version` to your `plugin.yml` file.
 
+> [!TIP]
+> You can find a full example project in the `resources/examples/MyPlugin` directory of this repository, complete with a compiled `jar` file and source code from the classes and methods used here in this tutorial.
 
 
 ## APIs
