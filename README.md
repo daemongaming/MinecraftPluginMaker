@@ -1,10 +1,10 @@
-#Minecraft Plugin Maker
+# Minecraft Plugin Maker
 
 How to easily make a Minecraft plugin using the Bukkit/Spigot API.
 
 
 
-##Setup
+## Setup
 
 * Eclipse IDE for Java
   - URL: https://www.eclipse.org/downloads/
@@ -24,7 +24,7 @@ How to easily make a Minecraft plugin using the Bukkit/Spigot API.
 
 
 
-##APIs
+## APIs
 
 An API is another library of classes and methods that can be referenced in one's own code. In fact, by creating public classes and methods, one's own project technically becomes its own API that can be referenced by other plugins!
 
@@ -40,9 +40,9 @@ Simply add the `jar` files to your project's `Build Path`, and they can automati
 
 
 
-##Basic Java
+## Basic Java
 
-###Variables & Data Types
+### Variables & Data Types
 
 Variables hold data according to their type until the program is shut down, or the variable is designated to be "garbage collected".
 
@@ -52,7 +52,7 @@ Variables may have modifiers like `public` or `private`, `static`, and `final` i
 * `static` means accessible even without an instance of its parent's class created first
 * `final` means constant, i.e. does not change
 
-####Example
+#### Example
 
 `private int n = 126;` declares (creates) a variable called `n` of type `int` (an integer) that is equal to the numerical value `126` that can be only accessed inside its own class.
 
@@ -75,7 +75,7 @@ Variables may have modifiers like `public` or `private`, `static`, and `final` i
 
 
 
-###Classes
+### Classes
 
 Classes are objects that contain methods and variables that can be referenced by referencing the class.
 
@@ -83,7 +83,7 @@ Classes only need to start with the keyword `class` followed by their name and o
 
 Classes may have modifiers such as `public` or `private`, `static`, and `final`.
 
-####Example
+#### Example
 
 `public class MyClass{ String myVar = "hello world!"; }` defines a class called `MyClass` which has the String variable `myVar` inside of it, that can be accessed later with `new MyClass().myVar`. 
 
@@ -101,14 +101,14 @@ Adding the `static` modifier will allow the variable to be called without first 
 
 
 
-###Methods
+### Methods
 
 Methods can be called from their parent class to perform the functions coded inside of them.
 
 > [!NOTE]
 > Methods can `return` an object as labeled in the declaration, or simply perform the function without returning anything at all by using the modifier `void`.
 
-####Example
+#### Example
 
 `public MyListener getListener() { return myListener; }` in the `Main` class, where one initialized a global variable `myListener` of class type `MyListener` in the `onEnable()` method using `MyListener myListener = new MyListener();"`, can be called in other classes to get the instance of that listener class with `MyListener myListener = mainClass.getListener();` where `mainClass` is the instance of one's `Main` class.
 
@@ -117,14 +117,14 @@ Methods can be called from their parent class to perform the functions coded ins
 
 
 
-###Conditionals
+### Conditionals
 
 Conditionals are ways to compare objects, returning a `true` or `false` value.
 
 > [!NOTE]
 > `false` is equal to `0`, and `true` is equal to `1`.
 
-####Example
+#### Example
 
 * `boolean condition = true;`
 * `if (condition) { ... } else if (!condition) { ... } else { ... }`
@@ -132,11 +132,11 @@ Conditionals are ways to compare objects, returning a `true` or `false` value.
 
 
 
-###Loops
+### Loops
 
 Loops can be used to continuously perform function until a condition is met.
 
-####Example
+#### Example
 
 * `for (int i=0; i<10; i++) { ... }` executes the code in the curly brackets 10 times by starting with `int i` at `0` and incrementing `i` with `i++` for every loop until `i<10` is no longer `true`.
 * `for (Object obj : objects) { ... }` executes the code in the curly brackets for each `Object` in the `objects` list (or any `iterable` type object), inside the scope of which the `Object` `obj` is the object currently being iterated over.
@@ -148,14 +148,14 @@ Loops can be used to continuously perform function until a condition is met.
 
 
 
-##Spigot API
+## Spigot API
 
 Now that you know the basics of Java, you can manipulate the types of objects, classes, and methods found in the Spigot API in order to modify your Minecraft server's gameplay.
 
 Following here are some of the most common parts of the Spigot API that you will access for plugin development.
 
 
-###Listener & EventHandler
+### Listener & EventHandler
 
 A class which `implements Listener` can detect events occurring on the server and run custom code accordingly.
 
@@ -197,7 +197,7 @@ public void onBlockBreak(BlockBreakEvent event) {
 ```
 
 
-###Player & Entity
+### Player & Entity
 
 The `Player` type is one of the most commonly accessed types in the Spigot API. It allows you to get all sorts of data about the player at the moment, as well as set that data to new values.
 
@@ -223,7 +223,7 @@ public void onDeath(EntityDeathEvent event) {
 > Notice that we don't assume the type of entities, rather we use conditional checks of whether they are an `instanceof` that type (`killer instanceof Player`) and *then* we can cast it to the type (`(Player) player`) to use that type's methods.
 
 
-###ItemStack & Inventory
+### ItemStack & Inventory
 
 The `ItemStack` type is another commonly accessed type in the Spigot API. It contains all of the information about an item, including the complex `ItemMeta` child type containing everything from custom item name to the full text of a written book's pages.
 
@@ -239,7 +239,7 @@ To access the `Inventory` of an `Entity` object, you simply use `getInventory()`
 > Entities have differenty types of inventories, so you should check for the entity's type first and then cast it to that type, and get the inventory from the resulting object.
 
 
-###Block & Location
+### Block & Location
 
 In order to manipulate the world, you'll need to work with `Location` and `Block` type objects.
 
@@ -259,7 +259,7 @@ where `world` is the `World` object, and `x`, `y`, and `z` are their respective 
 > It is usually sufficient to use an `int` value for each `x`, `y`, and `z`, but `Location` accepts more specific decimal values as well.
 
 
-###FileConfiguration
+### FileConfiguration
 
 The `FileConfiguration` object is used to access data stored in a `File`, which is usually of the file type `yml` for Spigot plugins.
 
@@ -268,7 +268,7 @@ The data in a `FileConfiguration` object can be accessed by using the `get(key)`
 Using a `FileConfiguration` object can be a bit complex, but once you have the basics down it is a powerful tool for storing data from your program that would otherwise be lost when `onDisable()` is completed (aka, the server is shut down). This data can then be retrieved in `onEnable()` or wherever you want to call it.
 
 
-###BukkitScheduler
+### BukkitScheduler
 
 A `BukkitScheduler` is a way to schedule a task (code) to be run in the future, at a determined time. These tasks can be scheduled to repeat at certain intervals, as well.
 
@@ -287,7 +287,7 @@ Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
 
 
 
-##plugin.yml
+## plugin.yml
 
 Every plugin needs to have a `plugin.yml` file that contains useful basic information about the plugin, such as the name of the plugin, where to find the main class, and what commands can be used.
 
@@ -307,7 +307,7 @@ commands:
 
 
 
-##Exporting & Uploading
+## Exporting & Uploading
 
 In order to test your plugin out, you have to export your project to a `jar` file with all of the appropriate files, and then upload the `jar` file to the `plugins` folder of your Minecraft server. Then, start/enable the server and test the plugin!
 
